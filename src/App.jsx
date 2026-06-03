@@ -8,6 +8,7 @@ export default function App() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [visibleSkills, setVisibleSkills] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Typing animation state for the Hero section role title
   const roles = ["AI Architect", "AI and ML Engineer", "Full Stack Developer", "Data Analytics"];
@@ -151,6 +152,29 @@ export default function App() {
             <a href="#training" className="navLink">Training</a>
             <a href="#references" className="navLink">References</a>
             <a href="#contact" className="navLink">Contact</a>
+          </nav>
+          
+          {/* Mobile hamburger toggle */}
+          <button 
+            className={`mobileMenuToggle ${isMobileMenuOpen ? 'open' : ''}`} 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className="hamburgerBar"></span>
+            <span className="hamburgerBar"></span>
+            <span className="hamburgerBar"></span>
+          </button>
+          
+          {/* Mobile Navigation Drawer */}
+          <nav className={`mobileNavLinks ${isMobileMenuOpen ? 'active' : ''}`}>
+            <a href="#about" className="mobileNavLink" onClick={() => setIsMobileMenuOpen(false)}>About</a>
+            <a href="#education" className="mobileNavLink" onClick={() => setIsMobileMenuOpen(false)}>Education</a>
+            <a href="#skills" className="mobileNavLink" onClick={() => setIsMobileMenuOpen(false)}>Skills</a>
+            <a href="#projects" className="mobileNavLink" onClick={() => setIsMobileMenuOpen(false)}>Projects</a>
+            <a href="#certifications" className="mobileNavLink" onClick={() => setIsMobileMenuOpen(false)}>Certs</a>
+            <a href="#training" className="mobileNavLink" onClick={() => setIsMobileMenuOpen(false)}>Training</a>
+            <a href="#references" className="mobileNavLink" onClick={() => setIsMobileMenuOpen(false)}>References</a>
+            <a href="#contact" className="mobileNavLink" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
           </nav>
         </div>
       </header>
