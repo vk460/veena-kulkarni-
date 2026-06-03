@@ -198,17 +198,9 @@ export default function App() {
               <div className="heroLeft">
                 <h1 className="heroTitle">Veena <span>Kulkarni</span></h1>
                 <h5 className="heroRole">{typingText}<span className="typingCursor">|</span></h5>
-                <div className="heroSubtitle">
-                  <p>
-                    I'm Veena Vishwanath Kulkarni, a B.E. Computer Science student from Pandharpur, India, specializing in Artificial Intelligence and Machine Learning.
-                  </p>
-                  <p style={{ marginTop: '16px' }}>
-                    I design and build AI-powered solutions — including RAG-based tutors, multilingual localization engines, and NLP-driven platforms — with expertise in Generative AI, LLMs, Prompt Engineering, LangChain, and Deep Learning.
-                  </p>
-                  <p style={{ marginTop: '16px' }}>
-                    I'm currently looking for an entry-level AI Engineer opportunity where I can contribute to scalable, intelligent systems and grow alongside a forward-thinking team.
-                  </p>
-                </div>
+                <p className="heroSubtitle">
+                  I'm Veena Vishwanath Kulkarni, an aspiring AI/ML Developer from India with a deep focus on Generative AI, LLMs, and Prompt Engineering. I believe AI should solve real, meaningful problems — and I back that belief by building RAG-based systems, multilingual engines, and intelligent platforms. I'm not just learning AI; I'm actively shaping it. Currently seeking an entry-level AI Engineer role to contribute, grow, and create impact.
+                </p>
                 <div className="heroCTA">
                   <a 
                     href="/veena-kulkarni-resume.pdf" 
