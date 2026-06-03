@@ -140,7 +140,7 @@ export default function App() {
       <header className="header">
         <div className="navContainer">
           <a href="#" className="logo">
-            VEENA<span>.AI</span>
+            VEENA
           </a>
           <nav className="navLinks">
             <a href="#about" className="navLink">About</a>
