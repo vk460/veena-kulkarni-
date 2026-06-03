@@ -1,0 +1,371 @@
+.sectionWrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding-top: 80px;
+  background: var(--surface-bg, transparent); /* fallback if not set */
+}
+
+.sectionHeadingWrapper {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sectionLabel {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: 12px;
+  color: var(--primary);
+}
+
+.sectionHeading {
+  font-size: 48px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.carouselTrackWrapper {
+  width: 100%;
+  position: relative;
+  padding-bottom: 80px; /* space for dots and progress bar */
+}
+
+.slidingTrack {
+  display: flex;
+  transition: transform 0.85s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
+}
+
+.certSlide {
+  width: 100vw;
+  flex-shrink: 0;
+  position: relative;
+  min-height: 70vh;
+  overflow: visible;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  padding: 0 80px;
+  gap: 40px;
+  align-items: center; /* Vertically center so left and right columns align perfectly */
+}
+
+/* LEFT COLUMN */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.outlineNumber {
+  font-size: 180px;
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.1); /* fallback */
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px #d946ef; /* Vibrant purple outline */
+  margin-bottom: 20px;
+  opacity: 0;
+  padding-left: 5px;
+}
+
+.certTitle {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--foreground);
+  margin-bottom: 16px;
+  opacity: 0;
+}
+
+.certDescription {
+  font-size: 22px;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  max-width: 500px;
+  margin-bottom: 24px;
+  opacity: 0;
+}
+
+.tagsRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  opacity: 0;
+}
+
+.tag {
+  font-size: 14px;
+  border-radius: 20px;
+  padding: 6px 14px;
+  border: 0.5px solid var(--border);
+  color: var(--muted-foreground);
+}
+
+.tagHighlighted {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.viewTextLink {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  opacity: 0;
+}
+
+.viewTextLink:hover {
+  text-decoration: underline;
+}
+
+/* RIGHT COLUMN */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  opacity: 0;
+}
+
+.metaItem {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--foreground);
+}
+
+.imageContainer {
+  width: 95%;
+  max-width: 660px;
+  margin-left: auto;
+  aspect-ratio: 1.3547 / 1; /* Exact aspect ratio of the realistic golden frame */
+  position: relative;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.55); /* outer shadow */
+  overflow: hidden;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.certFrame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: white;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  padding: 12.3% 9.2%; /* Mathematically calculated insets to sit perfectly in transparent window */
+  box-sizing: border-box;
+}
+
+.frameOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  object-fit: fill;
+}
+
+/* NEXT NUMBER PEEK */
+.nextNumberPeek {
+  position: absolute;
+  right: -50px;
+  top: 50%;
+  transform: translateY(-50%) translateX(30px);
+  font-size: 300px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.05); /* fallback */
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px rgba(217, 70, 239, 0.2); /* Subtle purple outline */
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ANIMATIONS */
+.in .outlineNumber { animation: slideUpFade 0.6s ease 0.1s forwards; }
+.in .certTitle { animation: slideUpFade 0.6s ease 0.2s forwards; }
+.in .certDescription { animation: slideUpFade 0.6s ease 0.3s forwards; }
+.in .tagsRow { animation: slideUpFade 0.6s ease 0.4s forwards; }
+.in .viewTextLink { animation: slideUpFade 0.6s ease 0.5s forwards; }
+
+.in .metaRow { animation: slideUpFade 0.6s ease 0.2s forwards; }
+.in .imageContainer { animation: slideUpFade 0.6s ease 0.3s forwards; }
+
+.in .nextNumberPeek { animation: peekIn 0.8s ease 0.4s forwards; }
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes peekIn {
+  from { opacity: 0; transform: translateY(-50%) translateX(30px); }
+  to   { opacity: 0.2; transform: translateY(-50%) translateX(0);  }
+}
+
+/* NAVIGATION CONTROLS */
+.navArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  color: var(--foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  z-index: 10;
+}
+
+.navArrow:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.navArrowLeft {
+  left: 24px;
+}
+
+.navArrowRight {
+  right: 24px;
+}
+
+.navArrow svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dotIndicators {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  z-index: 5;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--foreground);
+  opacity: 0.25;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  border: none;
+  padding: 0;
+}
+
+.dotActive {
+  opacity: 1;
+  background-color: var(--primary);
+  width: 24px;
+  border-radius: 20px;
+}
+
+.progressBarContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: transparent;
+  z-index: 10;
+}
+
+.progressBar {
+  height: 100%;
+  background: var(--primary);
+  width: 0%;
+}
+
+.progressBarAnim {
+  width: 100%;
+  transition: width 5s linear;
+}
+
+@media (max-width: 1024px) {
+  .certSlide {
+    grid-template-columns: 1fr;
+    padding: 0 40px;
+    align-items: center;
+  }
+  
+  .leftColumn {
+    padding-bottom: 0;
+  }
+  
+  .nextNumberPeek {
+    display: none; /* Hide on smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .certSlide {
+    padding: 0 24px;
+  }
+  
+  .outlineNumber {
+    font-size: 120px;
+  }
+  
+  .certTitle {
+    font-size: 36px;
+  }
+  
+  .imageContainer {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1.3547 / 1;
+    height: auto;
+    margin: 0 auto;
+  }
+  
+  .navArrow {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .navArrowLeft { left: 8px; }
+  .navArrowRight { right: 8px; }
+}

@@ -1,0 +1,470 @@
+/* projects.module.css */
+
+.projectsSection {
+  id: projects;
+  padding-top: 100px;
+  border-top: 0.5px solid var(--border);
+  background-color: var(--background);
+}
+
+.sectionLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  text-align: center;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+
+.sectionHeading {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 80px;
+  color: var(--on-surface);
+  letter-spacing: -0.02em;
+}
+
+/* EACH PROJECT BLOCK */
+.projectBlock {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  overflow: visible; /* CRITICAL: overflow must be visible/unset so sticky works! */
+  border-bottom: 0.5px solid var(--border);
+}
+
+.zigzagEven {
+  flex-direction: row;
+}
+
+.zigzagOdd {
+  flex-direction: row-reverse;
+}
+
+/* IMAGE PANEL */
+.imagePanel {
+  width: 55%;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow: hidden; /* Sticky panel itself can clip its internal absolutely positioned children */
+  flex-shrink: 0;
+  background-color: var(--surface-container-lowest);
+}
+
+.projectImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1), transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1;
+}
+
+.imageActive {
+  opacity: 1;
+  transform: scale(1);
+  animation: kenBurns 6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  z-index: 2;
+}
+
+@keyframes kenBurns {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Placeholder Styling */
+.placeholderDiv {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--surface-container);
+  color: var(--muted-foreground);
+  padding: 40px;
+}
+
+.placeholderIcon {
+  width: 80px;
+  height: 80px;
+  opacity: 0.15;
+  margin-bottom: 16px;
+  stroke: var(--on-surface);
+}
+
+.placeholderText {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-align: center;
+  opacity: 0.4;
+  letter-spacing: 0.05em;
+}
+
+/* Image Overlays */
+.overlayEven {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent 60%, var(--background) 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.overlayOdd {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to left, transparent 60%, var(--background) 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Dot Indicators */
+.dotContainer {
+  position: absolute;
+  bottom: 32px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  z-index: 4;
+}
+
+.dotsLeft {
+  left: 32px;
+}
+
+.dotsRight {
+  right: 32px;
+}
+
+.dot {
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--on-surface);
+  opacity: 0.3;
+  cursor: pointer;
+  transition: width 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.dotActive {
+  width: 48px;
+  opacity: 1;
+  background-color: var(--primary);
+}
+
+.dotInactive {
+  width: 28px;
+}
+
+.dot:hover {
+  opacity: 0.7;
+}
+
+/* Gold Progress Bar */
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--primary);
+  box-shadow: 0 0 15px var(--primary);
+  z-index: 5;
+  transition: height 0.05s linear;
+}
+
+.progressLeft {
+  left: 0;
+}
+
+.progressRight {
+  right: 0;
+}
+
+/* CONTENT PANEL */
+.contentPanel {
+  width: 45%;
+  min-height: 100vh;
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  overflow: visible; /* Ensure nested sections show properly */
+}
+
+/* SCROLL ZONES */
+.scrollZone {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.featureZone {
+  border-top: 0.5px solid var(--border);
+  padding: 80px 0;
+}
+
+/* Watermark */
+.watermark {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 280px;
+  font-weight: 900;
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--accent);
+  opacity: 0.9;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.watermarkRight {
+  right: 40px;
+}
+
+.watermarkLeft {
+  left: 40px;
+}
+
+/* Category Badge */
+.categoryBadge {
+  display: inline-flex;
+  align-self: flex-start;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--accent-soft-border);
+  margin-bottom: 12px;
+}
+
+/* Project title */
+.projectTitle {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 14px 0;
+  color: var(--on-surface);
+  letter-spacing: -0.02em;
+}
+
+/* Description */
+.description {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.8;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+/* Tech stack tags */
+.tagContainer {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 20px;
+  padding: 6px 16px;
+  border: 1px solid var(--border);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--on-surface);
+  transition: all 0.3s ease;
+}
+
+.tagHighlighted {
+  background-color: rgba(245, 197, 66, 0.12);
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 0 15px rgba(245, 197, 66, 0.1);
+}
+
+/* Action Buttons */
+.buttonContainer {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.btnPrimary {
+  font-family: var(--font-body);
+  font-weight: 700;
+  border-radius: 50px;
+  padding: 13px 30px;
+  background-color: var(--primary);
+  color: var(--on-primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  border: 1px solid var(--primary);
+  box-shadow: 0 0 15px rgba(245, 197, 66, 0.2);
+}
+
+.btnPrimary:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(217, 70, 239, 0.3);
+  transform: translateY(-2px);
+}
+
+.btnSecondary {
+  font-family: var(--font-body);
+  font-weight: 700;
+  border-radius: 50px;
+  padding: 13px 30px;
+  background-color: transparent;
+  color: var(--primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  border: 1px solid var(--primary);
+}
+
+.btnSecondary:hover {
+  background-color: rgba(245, 197, 66, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Feature Details Zone Content */
+.pill {
+  display: inline-flex;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  border-radius: 20px;
+  padding: 4px 12px;
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  margin-bottom: 16px;
+  border: 1px solid var(--accent-soft-border);
+}
+
+.line {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  margin-bottom: 16px;
+}
+
+.featureHeading {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--on-surface);
+}
+
+.featureDetail {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.8;
+  color: #ffffff;
+}
+
+.featureDetail p,
+.featureDetail li,
+.featureDetail span {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* ZONE 0 CONTENT ANIMATIONS */
+.animItem {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.animItemVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays via JS or CSS module attributes */
+.stagger0 { transition-delay: 0ms; }
+.stagger1 { transition-delay: 60ms; }
+.stagger2 { transition-delay: 120ms; }
+.stagger3 { transition-delay: 180ms; }
+.stagger4 { transition-delay: 240ms; }
+
+/* MOBILE RESPONSIVE LAYOUT (< 768px) */
+@media (max-width: 767px) {
+  .sectionHeading {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .projectBlock {
+    flex-direction: column !important; /* Stack vertically, no zigzag */
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .imagePanel {
+    position: relative !important; /* Disables sticky */
+    width: 100% !important;
+    height: 55vw !important;
+    min-height: 240px !important;
+    top: auto !important;
+  }
+
+  .overlayEven, .overlayOdd {
+    background: linear-gradient(to bottom, transparent 60%, var(--background) 100%) !important;
+  }
+
+  .contentPanel {
+    width: 100% !important;
+    padding: 40px 24px !important;
+  }
+
+  .scrollZone {
+    min-height: auto !important;
+    padding: 20px 0 !important;
+  }
+
+  .featureZone {
+    border-top: 0.5px solid var(--border);
+    margin-top: 20px;
+    padding-top: 24px;
+  }
+
+  .projectTitle {
+    font-size: 28px;
+  }
+
+  .watermark {
+    font-size: 48px;
+    top: 20px;
+  }
+}

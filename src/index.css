@@ -1,0 +1,162 @@
+:root {
+  /* Core Colors */
+  --gold: #f5c542;
+  --magenta: #d946ef;
+  --magenta-glow: rgba(217, 70, 239, 0.15);
+  --gold-glow: rgba(245, 197, 66, 0.2);
+  
+  /* Fonts */
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Hanken Grotesk', sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+
+  /* Typography defaults */
+  --text-light: #ffffff;
+  --text-dark: #1a0518;
+  --text-dark-muted: #3d123d;
+  
+  scroll-behavior: smooth;
+}
+
+/* SECTION-SPECIFIC COLOR THEMES */
+
+/* 1. Home/Hero: Dark, #1a0518 */
+.sec-hero {
+  --background: #1a0518;
+  --bg: #1a0518;
+  --surface: #2b1129;
+  --on-surface: #ffffff;
+  --muted-foreground: #d1b5d0;
+  --border: rgba(255, 255, 255, 0.12);
+  --primary: #f5c542; /* Gold */
+  --accent: #d946ef; /* Magenta */
+  --accent-soft: rgba(217, 70, 239, 0.08);
+}
+
+/* 2. Education: Light, #fdf6ff */
+.sec-education {
+  --background: #fdf6ff;
+  --bg: #fdf6ff;
+  --surface: #ffffff;
+  --on-surface: #1a0518;
+  --muted-foreground: #3d123d;
+  --border: rgba(26, 5, 24, 0.1);
+  --primary: #d946ef; /* Magenta Accent */
+  --accent: #f5c542; /* Gold secondary */
+  --accent-soft: rgba(217, 70, 239, 0.06);
+}
+
+/* 3. Skills: Dark, #1e0a1e */
+.sec-skills {
+  --background: #1e0a1e;
+  --bg: #1e0a1e;
+  --surface: #2d162d;
+  --on-surface: #ffffff;
+  --muted-foreground: #d7b5d7;
+  --border: rgba(255, 255, 255, 0.1);
+  --primary: #f5c542;
+  --accent: #d946ef;
+  --accent-soft: rgba(217, 70, 239, 0.1);
+}
+
+/* 4. Projects: Darkest, #0d0012 */
+.sec-projects {
+  --background: #0d0012;
+  --bg: #0d0012;
+  --surface: #190a1f;
+  --on-surface: #ffffff;
+  --muted-foreground: #cbb2cf;
+  --border: rgba(255, 255, 255, 0.08);
+  --primary: #f5c542; /* Gold numbers + CTA */
+  --accent: #d946ef;
+  --accent-soft: rgba(217, 70, 239, 0.1);
+}
+
+/* 5. Certifications: Light, #fff8e7 */
+.sec-certifications {
+  --background: #fff8e7;
+  --bg: #fff8e7;
+  --surface: #ffffff;
+  --on-surface: #1a0518;
+  --muted-foreground: #3d123d;
+  --border: rgba(245, 197, 66, 0.18);
+  --primary: #f5c542; /* Gold Dominant */
+  --accent: #d946ef;
+  --accent-soft: rgba(245, 197, 66, 0.06);
+}
+
+/* 6. Training: Dark, #1a0a24 */
+.sec-training {
+  --background: #1a0a24;
+  --bg: #1a0a24;
+  --surface: #291a33;
+  --on-surface: #ffffff;
+  --muted-foreground: #d2c5da;
+  --border: rgba(255, 255, 255, 0.1);
+  --primary: #d946ef; /* Magenta dominant */
+  --accent: #f5c542;
+  --accent-soft: rgba(217, 70, 239, 0.08);
+}
+
+/* 7. References: Light, #fdf4ff */
+.sec-references {
+  --background: #fdf4ff;
+  --bg: #fdf4ff;
+  --surface: #ffffff;
+  --on-surface: #1a0518;
+  --muted-foreground: #3d123d;
+  --border: rgba(217, 70, 239, 0.12);
+  --primary: #d946ef; /* Magenta quotes */
+  --accent: #f5c542; /* Gold name */
+  --accent-soft: rgba(217, 70, 239, 0.06);
+}
+
+/* 8. Contact: Dark, mirrors Hero #1a0518 */
+.sec-contact {
+  --background: #1a0518;
+  --bg: #1a0518;
+  --surface: #2b1129;
+  --on-surface: #ffffff;
+  --muted-foreground: #d1b5d0;
+  --border: rgba(255, 255, 255, 0.12);
+  --primary: #f5c542; /* Gold CTA */
+  --accent: #d946ef; /* Magenta on hover */
+  --accent-soft: rgba(217, 70, 239, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #1a0518;
+  color: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography styles from DESIGN.md */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 900;
+}
+
+/* Scrollbar customizations */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0012;
+}
+::-webkit-scrollbar-thumb {
+  background: #2b1129;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
